@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - De Gouden Korst</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .contact {
+            max-width: 1200px;
+            margin: 8rem auto 4rem;
+            padding: 0 1rem;
+        }
+
+        .contact h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .contact-info h2 {
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--color-primary);
+            border-radius: 4px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">De Gouden Korst</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="assortiment.html">Ons Assortiment</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="cart-dropdown">
+        <div class="cart-items"></div>
+        <div class="cart-total">€0.00</div>
+        <button class="checkout-btn" onclick="window.shoppingCart.checkout()">Afrekenen</button>
+    </div>
+
+    <main class="contact">
+        <h1>Contact</h1>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Bezoek Ons</h2>
+                <p><i class="fas fa-map-marker-alt"></i> Hoofdstraat 123</p>
+                <p><i class="fas fa-phone"></i> 013-1234567</p>
+                <p><i class="fas fa-envelope"></i> info@degoudenkorst.nl</p>
+
+                <h2>Openingstijden</h2>
+                <p>Maandag - Vrijdag: 7:00 - 18:00</p>
+                <p>Zaterdag: 7:00 - 17:00</p>
+                <p>Zondag: Gesloten</p>
+            </div>
+
+            <div class="contact-form">
+                <h2>Stuur ons een bericht</h2>
+                <form id="contactForm" onsubmit="return handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Naam</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mailadres</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Bericht</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Verstuur</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4>De Gouden Korst</h4>
+                <p>Hoofdstraat 123</p>
+                <p>5031 AA Tilburg</p>
+                <p>Tel: 013-1234567</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Openingstijden</h4>
+                <p>Ma-Vr: 7:00 - 18:00</p>
+                <p>Za: 7:00 - 17:00</p>
+                <p>Zo: Gesloten</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 De Gouden Korst - Alle rechten voorbehouden</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html> 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ons Assortiment - De Gouden Korst</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .products {
+            max-width: 1200px;
+            margin: 8rem auto 4rem;
+            padding: 0 1rem;
+        }
+
+        .products h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+
+        .category-title {
+            grid-column: 1 / -1;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-secondary);
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">De Gouden Korst</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="assortiment.html" class="active">Ons Assortiment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="cart-dropdown">
+        <div class="cart-items"></div>
+        <div class="cart-total">€0.00</div>
+        <button class="checkout-btn" onclick="window.shoppingCart.checkout()">Afrekenen</button>
+    </div>
+
+    <main class="products">
+        <h1>Ons Assortiment</h1>
+        
+        <div class="product-grid">
+            <h2 class="category-title">Brood</h2>
+            
+            <div class="product-card" data-id="1" data-price="4.50">
+                <img src="/img/desembrood zonder ac.png" alt="Desembrood" class="product-image">
+                <div class="product-info">
+                    <h3>Desembrood</h3>
+                    <p>Traditioneel desembrood, langzaam gerezen voor optimale smaak en textuur.</p>
+                    <p class="price">€4.50</p>
+                    <button class="add-to-cart">In winkelwagen</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="2" data-price="3.95">
+                <img src="/img/meergranenbrood zond.png" alt="Meergranenbrood" class="product-image">
+                <div class="product-info">
+                    <h3>Meergranenbrood</h3>
+                    <p>Rijk aan zaden en granen, volkoren en voedzaam.</p>
+                    <p class="price">€3.95</p>
+                    <button class="add-to-cart">In winkelwagen</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="3" data-price="4.25">
+                <img src="/img/zuurdesem zonder ach.png" alt="Zuurdesem" class="product-image">
+                <div class="product-info">
+                    <h3>Zuurdesem</h3>
+                    <p>Ambachtelijk zuurdesem met een perfecte balans tussen zuur en zoet.</p>
+                    <p class="price">€4.25</p>
+                    <button class="add-to-cart">In winkelwagen</button>
+                </div>
+            </div>
+
+            <h2 class="category-title">Gebak</h2>
+
+            <div class="product-card" data-id="4" data-price="3.50">
+                <img src="/img/Appeltaart zonder te.png" alt="Appeltaart" class="product-image">
+                <div class="product-info">
+                    <h3>Appeltaart</h3>
+                    <p>Klassieke appeltaart met een knapperige korst en zoete vulling.</p>
+                    <p class="price">€3.50</p>
+                    <button class="add-to-cart">In winkelwagen</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="5" data-price="2.25">
+                <img src="/img/Crossant zonder te v.png" alt="Croissant" class="product-image">
+                <div class="product-info">
+                    <h3>Croissant</h3>
+                    <p>Licht en luchtig, gemaakt met echte boter.</p>
+                    <p class="price">€2.25</p>
+                    <button class="add-to-cart">In winkelwagen</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="6" data-price="2.75">
+                <img src="/img/Chocolade koek zonde.png" alt="Chocoladekoek" class="product-image">
+                <div class="product-info">
+                    <h3>Chocoladekoek</h3>
+                    <p>Rijk aan chocolade, met een zachte binnenkant en knapperige buitenkant.</p>
+                    <p class="price">€2.75</p>
+                    <button class="add-to-cart">In winkelwagen</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4>De Gouden Korst</h4>
+                <p>Hoofdstraat 123</p>
+                <p>5031 AA Tilburg</p>
+                <p>Tel: 013-1234567</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Openingstijden</h4>
+                <p>Ma-Vr: 7:00 - 18:00</p>
+                <p>Za: 7:00 - 17:00</p>
+                <p>Zo: Gesloten</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 De Gouden Korst - Alle rechten voorbehouden</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html> 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Gouden Korst - Ambachtelijke Bakkerij</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            background-color: var(--color-background);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .about-image img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">De Gouden Korst</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="pages/assortiment.html">Ons Assortiment</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="cart-dropdown">
+        <div class="cart-items"></div>
+        <div class="cart-total">€0.00</div>
+        <button class="checkout-btn" onclick="window.shoppingCart.checkout()">Afrekenen</button>
+    </div>
+
+    <section class="hero">
+        <h1>De Gouden Korst</h1>
+        <p class="subtitle">Ambachtelijke Bakkerij in Tilburg</p>
+    </section>
+
+    <section class="about">
+        <div class="about-content">
+            <h2>Over Ons</h2>
+            <p>Welkom bij De Gouden Korst, waar we al meer dan 30 jaar ambachtelijk brood en gebak maken met passie en traditie. Onze bakkers werken dagelijks met de beste ingrediënten om u het lekkerste brood en gebak te kunnen aanbieden.</p>
+            <p>Bij ons vindt u een uitgebreide selectie van vers gebakken brood, gebak en andere lekkernijen. Alles wordt met de hand gemaakt volgens traditionele recepten.</p>
+        </div>
+        <div class="about-image">
+            <img src="img/ambachtelijke bakker.png" alt="Onze bakkerij">
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-bread-slice"></i>
+            <h3>Vers Gebakken</h3>
+            <p>Elke ochtend vroeg beginnen onze bakkers met het bereiden van vers brood en gebak. Met onze traditionele recepten en ambachtelijke technieken zorgen we voor de perfecte smaak en textuur.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-heart"></i>
+            <h3>Ambachtelijk</h3>
+            <p>Al meer dan 30 jaar maken we ons brood en gebak met de hand, volgens oude familierecepten. Onze passie voor het bakkersvak zorgt voor unieke producten met karakter.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-leaf"></i>
+            <h3>Natuurlijk</h3>
+            <p>We gebruiken alleen de beste, natuurlijke ingrediënten. Van biologische granen tot verse zuivelproducten, alles wordt zorgvuldig geselecteerd voor de beste kwaliteit.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4>De Gouden Korst</h4>
+                <p>Hoofdstraat 123</p>
+                <p>5031 AA Tilburg</p>
+                <p>Tel: 013-1234567</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Openingstijden</h4>
+                <p>Ma-Vr: 7:00 - 18:00</p>
+                <p>Za: 7:00 - 17:00</p>
+                <p>Zo: Gesloten</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 De Gouden Korst - Alle rechten voorbehouden</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html> 

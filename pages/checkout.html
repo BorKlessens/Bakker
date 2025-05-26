@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afrekenen - De Gouden Korst</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 8rem auto 4rem;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .checkout-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .order-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 100px;
+        }
+
+        .order-items {
+            margin: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .payment-methods {
+            margin: 1.5rem 0;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .payment-method:hover {
+            border-color: var(--color-primary);
+        }
+
+        .payment-method input[type="radio"] {
+            margin-right: 1rem;
+        }
+
+        .payment-method i {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+        }
+
+        .submit-order {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--color-secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-order:hover {
+            background-color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">De Gouden Korst</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="assortiment.html">Ons Assortiment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="cart-dropdown">
+        <div class="cart-items"></div>
+        <div class="cart-total">€0.00</div>
+        <button class="checkout-btn" onclick="window.shoppingCart.checkout()">Afrekenen</button>
+    </div>
+
+    <main class="checkout-container">
+        <div class="checkout-form">
+            <h1>Afrekenen</h1>
+            <form id="checkout-form" onsubmit="return handleCheckout(event)">
+                <div class="form-group">
+                    <label for="name">Naam *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mailadres *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefoonnummer *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Adres *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="postal">Postcode *</label>
+                    <input type="text" id="postal" name="postal" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Plaats *</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Opmerkingen</label>
+                    <textarea id="notes" name="notes" placeholder="Speciale wensen of allergieën?"></textarea>
+                </div>
+
+                <div class="payment-methods">
+                    <h3>Betaalmethode</h3>
+                    <div class="payment-method">
+                        <input type="radio" id="ideal" name="payment" value="ideal" required>
+                        <i class="fab fa-ideal"></i>
+                        <label for="ideal">iDEAL</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="pin" name="payment" value="pin">
+                        <i class="fas fa-credit-card"></i>
+                        <label for="pin">PIN bij afhalen</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-order">Bestelling plaatsen</button>
+            </form>
+        </div>
+
+        <div class="order-summary">
+            <h2>Bestellingsoverzicht</h2>
+            <div class="order-items" id="order-items">
+                <!-- Order items will be populated by JavaScript -->
+            </div>
+            <div class="order-total" id="order-total">
+                <!-- Total will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4>De Gouden Korst</h4>
+                <p>Hoofdstraat 123</p>
+                <p>5031 AA Tilburg</p>
+                <p>Tel: 013-1234567</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Openingstijden</h4>
+                <p>Ma-Vr: 7:00 - 18:00</p>
+                <p>Za: 7:00 - 17:00</p>
+                <p>Zo: Gesloten</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 De Gouden Korst - Alle rechten voorbehouden</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script>
+        // Update order summary when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            updateOrderSummary();
+        });
+
+        function updateOrderSummary() {
+            const orderItems = document.getElementById('order-items');
+            const orderTotal = document.getElementById('order-total');
+            
+            if (window.shoppingCart.items.length === 0) {
+                orderItems.innerHTML = '<p>Je winkelwagen is leeg</p>';
+                orderTotal.textContent = '€0.00';
+                return;
+            }
+
+            orderItems.innerHTML = window.shoppingCart.items.map(item => `
+                <div class="order-item">
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>€${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            orderTotal.textContent = `Totaal: €${window.shoppingCart.total.toFixed(2)}`;
+        }
+
+        function handleCheckout(event) {
+            event.preventDefault();
+            
+            if (window.shoppingCart.items.length === 0) {
+                alert('Je winkelwagen is leeg!');
+                return false;
+            }
+
+            const formData = new FormData(event.target);
+            const orderData = {
+                customer: Object.fromEntries(formData),
+                items: window.shoppingCart.items,
+                total: window.shoppingCart.total
+            };
+
+            // Here you would typically send the order data to your backend
+            console.log('Order data:', orderData);
+
+            // Show success message
+            alert('Bedankt voor je bestelling! We nemen zo snel mogelijk contact met je op.');
+            
+            // Clear cart and redirect to home
+            window.shoppingCart.items = [];
+            window.shoppingCart.updateCart();
+            window.location.href = '../index.html';
+            
+            return false;
+        }
+    </script>
+</body>
+</html> 
