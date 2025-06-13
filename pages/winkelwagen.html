@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winkelwagen - De Gouden Korst</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">De Gouden Korst</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="assortiment.html">Ons Assortiment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="winkelwagen.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Winkelwagen</span>
+                <span class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <div class="cart-container">
+            <h1>Uw Winkelwagen</h1>
+            <div class="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Totaalbedrag:</span>
+                    <span class="total-amount">€0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="window.shoppingCart.checkout()">
+                    Afrekenen
+                </button>
+                <a href="assortiment.html" class="continue-shopping">
+                    <i class="fas fa-arrow-left"></i> Verder winkelen
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4>De Gouden Korst</h4>
+                <p>Hoofdstraat 123</p>
+                <p>5031 AA Tilburg</p>
+                <p>Tel: 013-1234567</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Openingstijden</h4>
+                <p>Ma-Vr: 7:00 - 18:00</p>
+                <p>Za: 7:00 - 17:00</p>
+                <p>Zo: Gesloten</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 De Gouden Korst - Alle rechten voorbehouden</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html> 

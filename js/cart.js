@@ -49,11 +49,26 @@ class ShoppingCart {
         } else {
             this.items.push({
                 ...product,
-                quantity: 1
+                quantity: 1,
+                image: this.getProductImage(product.id)
             });
         }
 
         this.updateCart();
+    }
+
+    getProductImage(productId) {
+        // Map product IDs naar de juiste afbeeldingsnamen
+        const imageMap = {
+            'appeltaart': 'Appeltaart zonder te.png',
+            'chocoladekoek': 'Chocolade koek zonde.png',
+            'croissant': 'Crossant zonder te v.png',
+            'meergranenbrood': 'meergranenbrood zond.png',
+            'desembrood': 'desembrood zonder ac.png',
+            'zuurdesem': 'zuurdesem zonder ach.png'
+        };
+
+        return imageMap[productId] || 'placeholder.jpg';
     }
 
     removeItem(productId) {
@@ -80,20 +95,29 @@ class ShoppingCart {
         // Update cart items display
         this.cartItems.innerHTML = this.items.map(item => `
             <div class="cart-item">
-                <span class="item-name">${item.name}</span>
-                <div class="item-quantity">
-                    <button class="quantity-btn minus" onclick="window.shoppingCart.updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                    <span>${item.quantity}</span>
-                    <button class="quantity-btn plus" onclick="window.shoppingCart.updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                <div class="item-details">
+                    <h3 class="item-name">${item.name}</h3>
+                    <span class="item-price">€${item.price.toFixed(2)}</span>
+                    <div class="item-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="window.shoppingCart.updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn plus" onclick="window.shoppingCart.updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                        </div>
+                        <button class="remove-item" onclick="window.shoppingCart.removeItem('${item.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
-                <span class="item-price">€${(item.price * item.quantity).toFixed(2)}</span>
-                <button class="remove-item" onclick="window.shoppingCart.removeItem('${item.id}')">×</button>
             </div>
         `).join('');
 
         // Update total
         this.total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        this.cartTotal.textContent = `€${this.total.toFixed(2)}`;
+        this.cartTotal.innerHTML = `
+            <span>Totaalbedrag:</span>
+            <span class="total-amount">€${this.total.toFixed(2)}</span>
+        `;
     }
 
     checkout() {
